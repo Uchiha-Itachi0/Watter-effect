@@ -1,0 +1,72 @@
+/* Actully there are two name text first name text and behind that there is another name text */
+/* First name is transparent and second is changing shape using clip-path.Producing overall wattery effect. */
+
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+
+/* Puttning name on center */
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: rgb(30, 30, 30);
+    font-family:"Poppins", sans-serif;
+}
+
+.container{
+    position: relative;
+}
+
+/* Nothing especial just making the nice appearence. */
+.container h1{
+    position: absolute;
+    /* color: white; */
+    font-size: 9rem;
+    transform: translate(-50%, -50%);
+    border: 2px solid #03a9f4;
+    box-shadow: 
+    0 0 7px white,
+    0 0 10px white,
+    0 0 21px white,
+    0 0 42px #03a9f4,
+    0 0 82px #03a9f4,
+    0 0 92px #03a9f4,
+    0 0 150px #03a9f4;
+}
+
+/* Making the first name transparent with stroke of 2px. So that we can see the changes in shape of second name. */
+.container h1:nth-child(1){
+    color: transparent;
+    -webkit-text-stroke: 2px #03a9f4;
+
+}
+
+
+/* For wattery effect */
+.container h1:nth-child(2){
+    color: #03a9f4;
+    animation: animate 6s ease-in-out infinite;
+}
+
+
+/* These clip-path are made using clippy(custom polygon) to produce wavy effect  */
+@keyframes animate {
+    0%, 100%{
+        clip-path: polygon(0 31%, 13% 44%, 27% 47%, 35% 57%, 51% 69%, 68% 64%, 84% 67%, 100% 60%, 100% 100%, 0 100%);
+    }
+
+    50%{
+        clip-path: polygon(0 67%, 16% 64%, 27% 61%, 41% 54%, 60% 53%, 71% 46%, 85% 40%, 100% 28%, 100% 100%, 0 100%);    }
+}
+
+@media screen and (max-width:650px) {
+    .container h1{
+        font-size: 5rem;
+    }
+    
+}
